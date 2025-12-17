@@ -1,24 +1,24 @@
 "use client";
 
 import { useState } from 'react';
-import { SweetCard } from '@/components/sweets/sweet-card';
-import { sweets } from '@/lib/data';
+import { DishCard } from '@/components/dishes/dish-card';
+import { dishes } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const categories = ['All', 'Milk-based', 'Dry Fruit', 'Festival Specials', 'Classic'];
+const categories = ['All', 'Appetizer', 'Main Course', 'Dessert', 'Signature'];
 
 export default function MenuPage() {
   const [filter, setFilter] = useState('All');
 
-  const filteredSweets = filter === 'All' ? sweets : sweets.filter(s => s.category === filter);
+  const filteredDishes = filter === 'All' ? dishes : dishes.filter(s => s.category === filter);
 
   return (
     <div className="container mx-auto px-4 md:px-6 py-12 md:py-20">
       <div className="text-center mb-12">
-        <h1 className="text-5xl md:text-6xl font-bold font-headline mb-4">Our Sweet Symphony</h1>
+        <h1 className="text-5xl md:text-6xl font-bold font-headline mb-4">The Menu</h1>
         <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-          Explore a curated collection of India's most cherished sweets, each handcrafted to perfection using timeless recipes.
+          A curated selection of dishes that celebrate the harmony of flavor, texture, and aroma, crafted with passion by our culinary artisans.
         </p>
       </div>
 
@@ -44,14 +44,14 @@ export default function MenuPage() {
           transition={{ duration: 0.3 }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
         >
-          {filteredSweets.map((sweet, i) => (
+          {filteredDishes.map((dish, i) => (
             <motion.div
-              key={sweet.id}
+              key={dish.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
             >
-              <SweetCard sweet={sweet} />
+              <DishCard dish={dish} />
             </motion.div>
           ))}
         </motion.div>

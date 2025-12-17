@@ -15,7 +15,7 @@ export default function OrderSuccessPage() {
 
   useEffect(() => {
     // Generate a fake order ID on the client side to avoid hydration mismatch
-    setOrderId(`MD-${Math.floor(Math.random() * 90000) + 10000}`);
+    setOrderId(`EB-${Math.floor(Math.random() * 90000) + 10000}`);
     
     // Trigger confetti after a short delay
     const timer = setTimeout(() => setShowConfetti(true), 300);
@@ -25,16 +25,16 @@ export default function OrderSuccessPage() {
 
   return (
     <>
-      {showConfetti && <Confetti width={width} height={height} recycle={false} numberOfPieces={300} />}
+      {showConfetti && <Confetti width={width} height={height} recycle={false} numberOfPieces={300} colors={['#2c3e50', '#f1c40f', '#ecf0f1']}/>}
       <div className="container mx-auto flex items-center justify-center min-h-[calc(100vh-15rem)] py-12">
         <Card className="max-w-md w-full text-center p-8 md:p-12 shadow-2xl bg-card">
           <CardContent className="space-y-6">
             <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 260, damping: 20 }}>
                 <CheckCircle2 className="mx-auto h-20 w-20 text-green-500" />
             </motion.div>
-            <h1 className="text-3xl font-bold font-headline">Order Placed Successfully!</h1>
+            <h1 className="text-3xl font-bold font-headline">Confirmation Received!</h1>
             <p className="text-muted-foreground">
-              Thank you for your order. Your delicious sweets are being prepared and will be delivered shortly.
+              Thank you for your order. We are now preparing your exquisite meal.
             </p>
             {orderId && (
               <div className="bg-muted rounded-lg py-3">
@@ -44,10 +44,10 @@ export default function OrderSuccessPage() {
             )}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="w-full">
-                <Link href={`/track-order?id=${orderId}`}>Track Order</Link>
+                <Link href={`/track-order?id=${orderId}`}>Track Your Order</Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="w-full">
-                <Link href="/menu">Continue Shopping</Link>
+                <Link href="/menu">Continue Browsing</Link>
               </Button>
             </div>
           </CardContent>

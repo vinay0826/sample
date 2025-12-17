@@ -1,19 +1,19 @@
 "use client";
 
 import { createContext, useContext, useState, ReactNode } from 'react';
-import type { Sweet } from '@/lib/data';
+import type { Dish } from '@/lib/data';
 import { useToast } from "@/hooks/use-toast";
 
 type CartItem = {
-  sweet: Sweet;
+  dish: Dish;
   quantity: number;
 };
 
 type CartContextType = {
   cartItems: CartItem[];
-  addToCart: (sweet: Sweet, quantity: number) => void;
-  removeFromCart: (sweetId: number) => void;
-  updateQuantity: (sweetId: number, quantity: number) => void;
+  addToCart: (dish: Dish, quantity: number) => void;
+  removeFromCart: (dishId: number) => void;
+  updateQuantity: (dishId: number, quantity: number) => void;
   clearCart: () => void;
   getCartTotal: () => number;
   getItemCount: () => number;
@@ -25,35 +25,35 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const { toast } = useToast();
 
-  const addToCart = (sweet: Sweet, quantity: number) => {
+  const addToCart = (dish: Dish, quantity: number) => {
     setCartItems(prevItems => {
-      const existingItem = prevItems.find(item => item.sweet.id === sweet.id);
+      const existingItem = prevItems.find(item => item.dish.id === dish.id);
       if (existingItem) {
         return prevItems.map(item =>
-          item.sweet.id === sweet.id
+          item.dish.id === dish.id
             ? { ...item, quantity: item.quantity + quantity }
             : item
         );
       }
-      return [...prevItems, { sweet, quantity }];
+      return [...prevItems, { dish, quantity }];
     });
     toast({
-      title: "Added to cart!",
-      description: `${quantity} x ${sweet.name}`,
+      title: "Added to your order!",
+      description: `${quantity} x ${dish.name}`,
     });
   };
 
-  const removeFromCart = (sweetId: number) => {
-    setCartItems(prevItems => prevItems.filter(item => item.sweet.id !== sweetId));
+  const removeFromCart = (dishId: number) => {
+    setCartItems(prevItems => prevItems.filter(item => item.dish.id !== dishId));
   };
 
-  const updateQuantity = (sweetId: number, quantity: number) => {
+  const updateQuantity = (dishId: number, quantity: number) => {
     if (quantity <= 0) {
-      removeFromCart(sweetId);
+      removeFromCart(dishId);
     } else {
       setCartItems(prevItems =>
         prevItems.map(item =>
-          item.sweet.id === sweetId ? { ...item, quantity } : item
+          item.dish.id === dishId ? { ...item, quantity } : item
         )
       );
     }
@@ -64,7 +64,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   };
 
   const getCartTotal = () => {
-    return cartItems.reduce((total, item) => total + item.sweet.price * item.quantity, 0);
+    return cartItems.reduce((total, item) => total + item.dish.price * item.quantity, 0);
   };
   
   const getItemCount = () => {

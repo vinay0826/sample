@@ -35,12 +35,12 @@ export function CartSheet() {
               {itemCount}
             </Badge>
           )}
-          <span className="sr-only">Open cart</span>
+          <span className="sr-only">Open Order</span>
         </Button>
       </SheetTrigger>
       <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg">
         <SheetHeader className="px-6">
-          <SheetTitle>Cart ({itemCount})</SheetTitle>
+          <SheetTitle>Your Order ({itemCount})</SheetTitle>
         </SheetHeader>
         <Separator />
         {itemCount > 0 ? (
@@ -48,29 +48,29 @@ export function CartSheet() {
             <ScrollArea className="flex-1">
               <div className="flex flex-col gap-4 px-6 py-4">
                 {cartItems.map((item) => (
-                  <div key={item.sweet.id} className="flex items-center gap-4">
+                  <div key={item.dish.id} className="flex items-center gap-4">
                     <div className="relative h-16 w-16 overflow-hidden rounded-md">
                       <Image
-                        src={item.sweet.image}
-                        alt={item.sweet.name}
+                        src={item.dish.image}
+                        alt={item.dish.name}
                         fill
                         className="object-cover"
-                        data-ai-hint="indian sweet"
+                        data-ai-hint="gourmet food"
                       />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold">{item.sweet.name}</h3>
+                      <h3 className="font-semibold">{item.dish.name}</h3>
                       <p className="text-sm text-muted-foreground">
-                        {item.quantity} x {formatPrice(item.sweet.price)}
+                        {item.quantity} x {formatPrice(item.dish.price)}
                       </p>
                     </div>
                     <p className="font-semibold">
-                      {formatPrice(item.sweet.price * item.quantity)}
+                      {formatPrice(item.dish.price * item.quantity)}
                     </p>
                     <Button
                       variant="ghost"
                       size="icon"
-                      onClick={() => removeFromCart(item.sweet.id)}
+                      onClick={() => removeFromCart(item.dish.id)}
                     >
                       <Trash2 className="h-4 w-4 text-muted-foreground" />
                     </Button>
@@ -87,7 +87,7 @@ export function CartSheet() {
                 </div>
                  <div className="flex flex-col gap-2">
                     <Button asChild className="w-full">
-                        <Link href="/cart">View Cart</Link>
+                        <Link href="/cart">View Order</Link>
                     </Button>
                     <Button asChild variant="default" className="w-full">
                         <Link href="/checkout">Proceed to Checkout</Link>
@@ -100,9 +100,9 @@ export function CartSheet() {
           <div className="flex flex-1 items-center justify-center">
             <div className="text-center">
               <ShoppingBag className="mx-auto h-12 w-12 text-muted-foreground" />
-              <p className="mt-4 text-lg font-semibold">Your cart is empty</p>
+              <p className="mt-4 text-lg font-semibold">Your order is empty</p>
               <p className="mt-1 text-sm text-muted-foreground">
-                Add some sweets to get started!
+                Add some dishes to get started!
               </p>
               <SheetTrigger asChild>
                 <Button asChild variant="link" className="text-primary mt-2">

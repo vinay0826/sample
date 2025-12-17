@@ -20,8 +20,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Mithaai Delight",
-  description: "Fresh Traditional Sweets Delivered to Your Door",
+  title: "Elysian Bites",
+  description: "An unforgettable fine dining experience.",
 };
 
 export default function RootLayout({

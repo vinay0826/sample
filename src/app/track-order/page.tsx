@@ -6,9 +6,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, CookingPot, Bike, Home } from 'lucide-react';
 
 const steps = [
-  { name: 'Order Placed', icon: CheckCircle },
+  { name: 'Order Confirmed', icon: CheckCircle },
   { name: 'Preparing', icon: CookingPot },
-  { name: 'Out for Delivery', icon: Bike },
+  { name: 'On its way', icon: Bike },
   { name: 'Delivered', icon: Home },
 ];
 
@@ -63,7 +63,7 @@ export default function OrderTrackingPage() {
                       <step.icon className="h-6 w-6" />
                     </div>
                     <p className={`mt-2 text-sm font-medium transition-colors duration-500 ${
-                         index <= currentStep ? 'text-primary-foreground' : 'text-muted-foreground'
+                         index <= currentStep ? 'text-foreground' : 'text-muted-foreground'
                     }`}>
                       {step.name}
                     </p>
@@ -100,8 +100,8 @@ export default function OrderTrackingPage() {
                     <CookingPot className="h-6 w-6 text-primary"/>
                 </div>
                 <div>
-                    <p className="font-bold text-sm">Mithaai Delight</p>
-                    <p className="text-xs text-muted-foreground">Shop Location</p>
+                    <p className="font-bold text-sm">Elysian Bites Kitchen</p>
+                    <p className="text-xs text-muted-foreground">Restaurant Location</p>
                 </div>
                </div>
                <div className="absolute bottom-4 right-4 flex items-center gap-2 bg-card p-2 rounded-md shadow">
@@ -109,7 +109,7 @@ export default function OrderTrackingPage() {
                     <Home className="h-6 w-6 text-green-600"/>
                 </div>
                 <div>
-                    <p className="font-bold text-sm">Your Home</p>
+                    <p className="font-bold text-sm">Your Location</p>
                     <p className="text-xs text-muted-foreground">Delivery Address</p>
                 </div>
                </div>
