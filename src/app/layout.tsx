@@ -1,22 +1,23 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Poppins, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { CartProvider } from "@/context/cart-context";
 import { Toaster } from "@/components/ui/toaster";
+import { CursorFollower } from "@/components/cursor-follower";
 
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-playfair",
-});
-
-const inter = Inter({
+const headlineFont = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-inter",
+  variable: "--font-headline",
+});
+
+const bodyFont = Poppins({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500"],
+  variable: "--font-body",
 });
 
 export const metadata: Metadata = {
@@ -34,11 +35,12 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-body antialiased",
-          cormorant.variable,
-          inter.variable
+          headlineFont.variable,
+          bodyFont.variable
         )}
       >
         <CartProvider>
+          <CursorFollower />
           <div className="relative flex min-h-screen flex-col">
             <SiteHeader />
             <main className="flex-1 page-transition">{children}</main>
