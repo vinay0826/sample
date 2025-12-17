@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -7,7 +7,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { CartProvider } from "@/context/cart-context";
 import { Toaster } from "@/components/ui/toaster";
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-playfair",
@@ -20,8 +20,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Elysian Bites",
-  description: "An unforgettable fine dining experience.",
+  title: "Elysian Bites - A Fine Dining Experience",
+  description: "An unforgettable fine dining experience where vegetarian artistry meets the finest ingredients.",
 };
 
 export default function RootLayout({
@@ -34,7 +34,7 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-body antialiased",
-          playfair.variable,
+          cormorant.variable,
           inter.variable
         )}
       >
