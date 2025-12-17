@@ -45,12 +45,12 @@ export default function Home() {
             initial="hidden"
             animate="visible"
           >
-            <MotionDiv variants={childVariants}>
+            <MotionDiv variants={childVariants} style={{ willChange: 'opacity, transform' }}>
               <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-headline font-light leading-none tracking-wider text-balance">
                 The Art of Dining
               </h1>
             </MotionDiv>
-            <MotionDiv variants={childVariants}>
+            <MotionDiv variants={childVariants} style={{ willChange: 'opacity, transform' }}>
                <h2 className="text-2xl md:text-3xl font-headline font-light tracking-[0.2em] uppercase text-primary">
                 Redefined
               </h2>
