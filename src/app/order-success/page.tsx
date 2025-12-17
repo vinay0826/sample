@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle2 } from "lucide-react";
 import Confetti from "react-confetti";
 import { useWindowSize } from 'react-use';
+import { MotionDiv } from '@/components/motion-div';
 
 export default function OrderSuccessPage() {
   const [orderId, setOrderId] = useState('');
@@ -25,13 +26,13 @@ export default function OrderSuccessPage() {
 
   return (
     <>
-      {showConfetti && <Confetti width={width} height={height} recycle={false} numberOfPieces={300} colors={['#2c3e50', '#f1c40f', '#ecf0f1']}/>}
+      {showConfetti && <Confetti width={width} height={height} recycle={false} numberOfPieces={500} colors={['#FACC15', '#1F2937', '#F9FAFB']}/>}
       <div className="container mx-auto flex items-center justify-center min-h-[calc(100vh-15rem)] py-12">
         <Card className="max-w-md w-full text-center p-8 md:p-12 shadow-2xl bg-card">
           <CardContent className="space-y-6">
-            <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 260, damping: 20 }}>
+            <MotionDiv initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 260, damping: 20 }}>
                 <CheckCircle2 className="mx-auto h-20 w-20 text-green-500" />
-            </motion.div>
+            </MotionDiv>
             <h1 className="text-3xl font-bold font-headline">Confirmation Received!</h1>
             <p className="text-muted-foreground">
               Thank you for your order. We are now preparing your exquisite meal.
@@ -55,9 +56,4 @@ export default function OrderSuccessPage() {
       </div>
     </>
   );
-}
-
-// Dummy motion component to avoid dependency error
-const motion = {
-    div: ({ children, ...props }: any) => <div {...props}>{children}</div>
 }

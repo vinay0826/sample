@@ -4,27 +4,27 @@
 
 @layer base {
   :root {
-    --background: 20 14% 96%; /* Warm, creamy off-white */
+    --background: 30 50% 98%; /* Softer, warmer off-white */
     --foreground: 20 10% 10%;
-    --card: 20 14% 98%;
+    --card: 0 0% 100%;
     --card-foreground: 20 10% 10%;
-    --popover: 20 14% 98%;
+    --popover: 0 0% 100%;
     --popover-foreground: 20 10% 10%;
-    --primary: 40 85% 55%; /* Rich, metallic gold */
-    --primary-foreground: 20 10% 10%;
+    --primary: 39 94% 55%; /* Richer, more vibrant gold */
+    --primary-foreground: 20 10% 5%;
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
-    --accent: 20 10% 15%; /* Deep charcoal for contrast */
-    --accent-foreground: 20 14% 98%;
+    --accent: 20 10% 8%; /* Deeper, richer charcoal */
+    --accent-foreground: 30 50% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 20 10% 88%;
-    --input: 20 10% 88%;
-    --ring: 40 85% 55%;
+    --border: 30 30% 90%;
+    --input: 30 30% 90%;
+    --ring: 39 94% 55%;
     --radius: 0.75rem;
-    --chart-1: 40 85% 55%;
+    --chart-1: 39 94% 55%;
     --chart-2: 20 10% 25%;
     --chart-3: 0 70% 50%;
     --chart-4: 260 60% 55%;
@@ -49,5 +49,5 @@
 }
 
 .page-transition {
-  animation: fade-in 0.4s ease-in-out;
+  animation: fade-in 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
