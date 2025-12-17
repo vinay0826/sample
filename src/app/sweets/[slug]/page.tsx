@@ -10,13 +10,12 @@ export default function SweetPage({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto py-8 md:py-16">
         <SweetDetails sweet={sweet} />
     </div>
   );
 }
 
-// This is for modals, but we need the standalone page as fallback
 export async function generateStaticParams() {
   return sweets.map((sweet) => ({
     slug: sweet.slug,

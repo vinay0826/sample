@@ -14,38 +14,42 @@ export default function MenuPage() {
   const filteredSweets = filter === 'All' ? sweets : sweets.filter(s => s.category === filter);
 
   return (
-    <div className="container mx-auto px-4 md:px-6 py-12">
+    <div className="container mx-auto px-4 md:px-6 py-12 md:py-20">
       <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold font-headline mb-2">Our Exquisite Menu</h1>
-        <p className="text-lg text-muted-foreground">Discover a world of authentic Indian sweets, crafted with passion.</p>
+        <h1 className="text-5xl md:text-6xl font-bold font-headline mb-4">Our Sweet Symphony</h1>
+        <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          Explore a curated collection of India's most cherished sweets, each handcrafted to perfection using timeless recipes.
+        </p>
       </div>
 
-      <div className="flex justify-center flex-wrap gap-2 mb-12">
+      <div className="flex justify-center flex-wrap gap-3 mb-12">
         {categories.map(category => (
           <Button
             key={category}
             variant={filter === category ? 'default' : 'outline'}
             onClick={() => setFilter(category)}
-            className="rounded-full font-semibold"
+            className="rounded-full font-semibold px-6 py-2 text-base transition-all duration-300"
           >
             {category}
           </Button>
         ))}
       </div>
 
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         <motion.div
-          layout
+          key={filter}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
         >
-          {filteredSweets.map(sweet => (
+          {filteredSweets.map((sweet, i) => (
             <motion.div
               key={sweet.id}
-              layout
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
             >
               <SweetCard sweet={sweet} />
             </motion.div>
