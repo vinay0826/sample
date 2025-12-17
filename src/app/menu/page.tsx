@@ -6,7 +6,7 @@ import { dishes } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const categories = ['All', 'Appetizer', 'Main Course', 'Dessert', 'Signature'];
+const categories = ['All', 'Antipasto', 'Primo', 'Secondo', 'Dolce'];
 
 export default function MenuPage() {
   const [filter, setFilter] = useState('All');
@@ -14,15 +14,15 @@ export default function MenuPage() {
   const filteredDishes = filter === 'All' ? dishes : dishes.filter(s => s.category === filter);
 
   return (
-    <div className="container mx-auto px-4 md:px-6 py-12 md:py-20">
-      <div className="text-center mb-12">
-        <h1 className="text-5xl md:text-6xl font-bold font-headline mb-4">The Menu</h1>
+    <div className="container mx-auto px-4 md:px-6 py-24 md:py-32">
+      <div className="text-center mb-16">
+        <h1 className="text-5xl md:text-7xl font-light font-headline mb-4 tracking-tighter">The Banquet</h1>
         <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-          A curated selection of dishes that celebrate the harmony of flavor, texture, and aroma, crafted with passion by our culinary artisans.
+          A curated collection of vegetarian dishes inspired by the rich culinary traditions of ancient Rome.
         </p>
       </div>
 
-      <div className="flex justify-center flex-wrap gap-3 mb-12">
+      <div className="flex justify-center flex-wrap gap-3 mb-16">
         {categories.map(category => (
           <Button
             key={category}
@@ -42,7 +42,7 @@ export default function MenuPage() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-16"
         >
           {filteredDishes.map((dish, i) => (
             <motion.div

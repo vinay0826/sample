@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ShoppingBag, Trash2 } from "lucide-react";
+import { Scroll, Trash2 } from "lucide-react";
 import { useCart } from "@/context/cart-context";
 import Image from "next/image";
 import { formatPrice } from "@/lib/utils";
@@ -26,7 +26,7 @@ export function CartSheet() {
     <Sheet>
       <SheetTrigger asChild>
         <Button variant="ghost" size="icon" className="relative group">
-          <ShoppingBag className="h-6 w-6 text-foreground/80 group-hover:text-primary transition-colors" />
+          <Scroll className="h-6 w-6 text-foreground/70 group-hover:text-primary transition-colors" />
           {itemCount > 0 && (
             <Badge
               variant="default"
@@ -40,7 +40,7 @@ export function CartSheet() {
       </SheetTrigger>
       <SheetContent className="flex w-full flex-col sm:max-w-md bg-card/95 backdrop-blur-xl border-border/50">
         <SheetHeader className="p-6">
-          <SheetTitle className="font-headline font-medium tracking-widest text-2xl">Your Folio</SheetTitle>
+          <SheetTitle className="font-headline font-medium tracking-widest text-2xl">Order Folio</SheetTitle>
         </SheetHeader>
         <Separator className="bg-border/50" />
         {itemCount > 0 ? (
@@ -55,7 +55,7 @@ export function CartSheet() {
                         alt={item.dish.name}
                         fill
                         className="object-cover"
-                        data-ai-hint="gourmet food"
+                        data-ai-hint="roman food painting"
                       />
                     </div>
                     <div className="flex-1">
@@ -102,10 +102,10 @@ export function CartSheet() {
         ) : (
           <div className="flex flex-1 items-center justify-center">
             <div className="text-center px-8">
-              <ShoppingBag className="mx-auto h-12 w-12 text-muted-foreground" />
+              <Scroll className="mx-auto h-12 w-12 text-muted-foreground" />
               <p className="mt-6 text-xl font-headline font-medium tracking-wider">Your Folio is Empty</p>
               <p className="mt-2 text-sm text-muted-foreground">
-                Select from our curated menu to begin your experience.
+                Select from our curated banquet to begin your experience.
               </p>
               <SheetTrigger asChild>
                 <Button asChild variant="link" className="text-primary mt-4 tracking-widest">

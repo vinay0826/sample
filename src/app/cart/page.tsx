@@ -42,14 +42,14 @@ export default function CartPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Card className="flex items-center p-4 bg-card/50 border-border/30 rounded-lg shadow-none">
-                <div className="relative h-24 w-24 rounded-md overflow-hidden mr-6 border border-border/30">
+              <Card className="flex items-center p-4 bg-card rounded-lg shadow-sm">
+                <div className="relative h-24 w-24 rounded-md overflow-hidden mr-6 border border-border">
                   <Image
                     src={item.dish.image}
                     alt={item.dish.name}
                     fill
                     className="object-cover"
-                    data-ai-hint="gourmet food"
+                    data-ai-hint="roman food painting"
                   />
                 </div>
                 <div className="flex-1">
@@ -75,7 +75,7 @@ export default function CartPage() {
             </MotionDiv>
           ))}
         </div>
-        <Card className="lg:col-span-1 sticky top-32 bg-card/50 border-border/30 rounded-lg shadow-none p-2">
+        <Card className="lg:col-span-1 sticky top-32 bg-card rounded-lg shadow-sm p-2">
           <CardHeader>
             <CardTitle className="font-headline font-medium tracking-wider text-2xl">Summary</CardTitle>
           </CardHeader>
@@ -92,7 +92,7 @@ export default function CartPage() {
               <span className="text-muted-foreground">Taxes (18%)</span>
               <span>{formatPrice(tax)}</span>
             </div>
-            <Separator className="my-4 bg-border/50" />
+            <Separator className="my-4" />
             <div className="flex justify-between font-medium text-xl">
               <span>Total</span>
               <span>{formatPrice(grandTotal)}</span>

@@ -5,14 +5,12 @@ import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle2 } from "lucide-react";
-import Confetti from "react-confetti";
 import { useWindowSize } from 'react-use';
 import { MotionDiv } from '@/components/motion-div';
 import { useToast } from '@/hooks/use-toast';
 
 export default function OrderSuccessPage() {
   const [orderId, setOrderId] = useState('');
-  const { width, height } = useWindowSize();
   const { toast } = useToast();
 
   useEffect(() => {
@@ -21,7 +19,7 @@ export default function OrderSuccessPage() {
     setOrderId(newOrderId);
     
     toast({
-        title: "Confirmation Received!",
+        title: "Order Received!",
         description: `Your order #${newOrderId} has been placed.`,
     })
 
@@ -30,14 +28,14 @@ export default function OrderSuccessPage() {
   return (
     <>
       <div className="container mx-auto flex items-center justify-center min-h-[calc(100vh-15rem)] py-12">
-        <Card className="max-w-md w-full text-center p-8 md:p-12 shadow-2xl bg-card">
+        <Card className="max-w-md w-full text-center p-8 md:p-12 shadow-2xl bg-card border-border/70">
           <CardContent className="space-y-6">
             <MotionDiv initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 260, damping: 20 }}>
-                <CheckCircle2 className="mx-auto h-20 w-20 text-green-500" />
+                <CheckCircle2 className="mx-auto h-20 w-20 text-primary" />
             </MotionDiv>
-            <h1 className="text-3xl font-bold font-headline">Thank You For Your Order</h1>
+            <h1 className="text-3xl font-bold font-headline">Thank You For Your Patronage</h1>
             <p className="text-muted-foreground">
-              We are now preparing your exquisite meal. You will receive a confirmation shortly.
+              We are now preparing your banquet. A confirmation scroll will be dispatched shortly.
             </p>
             {orderId && (
               <div className="bg-muted rounded-lg py-3">
@@ -50,7 +48,7 @@ export default function OrderSuccessPage() {
                 <Link href={`/track-order?id=${orderId}`}>Track Your Order</Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="w-full">
-                <Link href="/menu">Continue Browsing</Link>
+                <Link href="/menu">Return to Menu</Link>
               </Button>
             </div>
           </CardContent>

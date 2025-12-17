@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { Poppins, Cormorant_Garamond } from "next/font/google";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { CartProvider } from "@/context/cart-context";
 import { Toaster } from "@/components/ui/toaster";
-import { CursorFollower } from "@/components/cursor-follower";
 
 const headlineFont = Cormorant_Garamond({
   subsets: ["latin"],
@@ -14,15 +13,15 @@ const headlineFont = Cormorant_Garamond({
   variable: "--font-headline",
 });
 
-const bodyFont = Poppins({
+const bodyFont = Inter({
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500"],
+  weight: ["300", "400", "500", "600"],
   variable: "--font-body",
 });
 
 export const metadata: Metadata = {
-  title: "Elysian Bites - A Fine Dining Experience",
-  description: "An unforgettable fine dining experience where vegetarian artistry meets the finest ingredients.",
+  title: "Elysian Bites - A Roman Culinary Experience",
+  description: "An unforgettable fine dining experience where vegetarian artistry meets timeless Roman elegance.",
 };
 
 export default function RootLayout({
@@ -40,7 +39,6 @@ export default function RootLayout({
         )}
       >
         <CartProvider>
-          <CursorFollower />
           <div className="relative flex min-h-screen flex-col">
             <SiteHeader />
             <main className="flex-1 page-transition">{children}</main>
