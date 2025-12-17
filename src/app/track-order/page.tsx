@@ -3,12 +3,12 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, CookingPot, Moped, Home } from 'lucide-react';
+import { CheckCircle, CookingPot, Bike, Home } from 'lucide-react';
 
 const steps = [
   { name: 'Order Placed', icon: CheckCircle },
   { name: 'Preparing', icon: CookingPot },
-  { name: 'Out for Delivery', icon: Moped },
+  { name: 'Out for Delivery', icon: Bike },
   { name: 'Delivered', icon: Home },
 ];
 
@@ -92,7 +92,7 @@ export default function OrderTrackingPage() {
                   transform: 'scale(1.5) translate(-50%, -50%)',
                 }}
               >
-                <Moped className="h-8 w-8 text-primary -rotate-12" />
+                <Bike className="h-8 w-8 text-primary -rotate-12" />
               </div>
 
                <div className="absolute top-4 left-4 flex items-center gap-2 bg-card p-2 rounded-md shadow">
