@@ -1,30 +1,29 @@
-export const dynamic = "force-dynamic";
-
 "use client";
 
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, CookingPot, Bike, Home } from 'lucide-react';
+export const dynamic = "force-dynamic";
+
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CheckCircle, CookingPot, Bike, Home } from "lucide-react";
 
 const steps = [
-  { name: 'Order Placed', icon: CheckCircle },
-  { name: 'In the Kitchen', icon: CookingPot },
-  { name: 'Carriage Dispatched', icon: Bike },
-  { name: 'Delivered', icon: Home },
+  { name: "Order Placed", icon: CheckCircle },
+  { name: "In the Kitchen", icon: CookingPot },
+  { name: "Carriage Dispatched", icon: Bike },
+  { name: "Delivered", icon: Home },
 ];
 
 export default function OrderTrackingPage() {
   const searchParams = useSearchParams();
-  const orderId = searchParams.get('id');
+  const orderId = searchParams.get("id");
   const [currentStep, setCurrentStep] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentStep(prev => {
-        if (prev < steps.length - 1) return prev + 1;
-        return prev;
-      });
+      setCurrentStep((prev) =>
+        prev < steps.length - 1 ? prev + 1 : prev
+      );
     }, 4000);
 
     return () => clearInterval(interval);
@@ -38,7 +37,7 @@ export default function OrderTrackingPage() {
       <div className="max-w-4xl mx-auto">
         <Card className="shadow-lg bg-card border-border/70">
           <CardHeader>
-            <CardTitle className="text-3xl font-headline font-light tracking-wider">
+            <CardTitle className="text-3xl font-light tracking-wider">
               Track Your Banquet
             </CardTitle>
             {orderId && (
@@ -67,17 +66,17 @@ export default function OrderTrackingPage() {
                     <div
                       className={`h-12 w-12 rounded-full flex items-center justify-center border-2 transition-colors duration-500 ${
                         index <= currentStep
-                          ? 'bg-primary border-primary text-primary-foreground'
-                          : 'bg-card border-border text-muted-foreground'
+                          ? "bg-primary border-primary text-primary-foreground"
+                          : "bg-card border-border text-muted-foreground"
                       }`}
                     >
                       <step.icon className="h-6 w-6" />
                     </div>
                     <p
-                      className={`mt-2 text-sm font-medium tracking-wider transition-colors ${
+                      className={`mt-2 text-sm font-medium tracking-wider ${
                         index <= currentStep
-                          ? 'text-foreground'
-                          : 'text-muted-foreground'
+                          ? "text-foreground"
+                          : "text-muted-foreground"
                       }`}
                     >
                       {step.name}
@@ -100,3 +99,4 @@ export default function OrderTrackingPage() {
     </div>
   );
 }
+
