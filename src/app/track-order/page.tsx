@@ -1,8 +1,6 @@
 "use client";
 
-export const dynamic = "force-dynamic";
-
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, CookingPot, Bike, Home } from "lucide-react";
@@ -14,7 +12,7 @@ const steps = [
   { name: "Delivered", icon: Home },
 ];
 
-export default function OrderTrackingPage() {
+function TrackOrderContent() {
   const searchParams = useSearchParams();
   const orderId = searchParams.get("id");
   const [currentStep, setCurrentStep] = useState(0);
@@ -100,3 +98,16 @@ export default function OrderTrackingPage() {
   );
 }
 
+export default function OrderTrackingPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="container mx-auto py-24 text-center text-muted-foreground">
+          Loading order details…
+        </div>
+      }
+    >
+      <TrackOrderContent />
+    </Suspense>
+  );
+}
