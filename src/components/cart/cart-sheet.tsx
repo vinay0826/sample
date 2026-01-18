@@ -1,3 +1,4 @@
+
 "use client";
 
 import {
@@ -7,6 +8,7 @@ import {
   SheetTitle,
   SheetTrigger,
   SheetFooter,
+  SheetClose,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -89,12 +91,16 @@ export function CartSheet() {
                   <span>{formatPrice(getCartTotal())}</span>
                 </div>
                  <div className="flex flex-col gap-2 pt-4">
-                    <Button asChild className="w-full" size="lg">
-                        <Link href="/cart">Review Folio</Link>
-                    </Button>
-                    <Button asChild variant="outline" className="w-full" size="lg">
-                        <Link href="/checkout">Finalize Experience</Link>
-                    </Button>
+                    <SheetClose asChild>
+                      <Button asChild className="w-full" size="lg">
+                          <Link href="/cart">Review Folio</Link>
+                      </Button>
+                    </SheetClose>
+                    <SheetClose asChild>
+                      <Button asChild variant="outline" className="w-full" size="lg">
+                          <Link href="/checkout">Finalize Experience</Link>
+                      </Button>
+                    </SheetClose>
                  </div>
               </div>
             </SheetFooter>

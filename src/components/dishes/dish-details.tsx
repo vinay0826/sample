@@ -3,13 +3,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import { Minus, Plus, ShoppingCart } from 'lucide-react';
 import type { Dish } from '@/lib/data';
 import { useCart } from '@/context/cart-context';
@@ -35,33 +28,59 @@ export function DishDetails({ dish }: DishDetailsProps) {
           src={dish.image}
           alt={dish.name}
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover"
           data-ai-hint="roman food painting"
         />
       </div>
+
       <div className="space-y-8">
         <div>
-          <Badge variant="outline" className='mb-4 tracking-widest uppercase'>{dish.category}</Badge>
-          <h1 className="text-4xl md:text-6xl font-light font-headline tracking-tighter">{dish.name}</h1>
-          <p className="text-3xl font-medium text-primary mt-4">{formatPrice(dish.price)}</p>
+          <Badge variant="outline" className="mb-4 tracking-widest uppercase">
+            {dish.category}
+          </Badge>
+          <h1 className="text-4xl md:text-6xl font-light tracking-tighter">
+            {dish.name}
+          </h1>
+          <p className="text-3xl font-medium text-primary mt-4">
+            {formatPrice(dish.price)}
+          </p>
         </div>
-        <p className="text-muted-foreground text-lg leading-relaxed">{dish.description}</p>
-        
+
+        <p className="text-muted-foreground text-lg leading-relaxed">
+          {dish.description}
+        </p>
+
         <div className="space-y-2">
-            <label className="text-sm font-medium text-muted-foreground tracking-wider uppercase">Quantity</label>
-            <div className="flex items-center gap-4">
-                <Button variant="outline" size="icon" onClick={() => setQuantity(q => Math.max(1, q - 1))}>
-                    <Minus className="h-4 w-4" />
-                </Button>
-                <span className="text-2xl font-semibold w-12 text-center">{quantity}</span>
-                <Button variant="outline" size="icon" onClick={() => setQuantity(q => q + 1)}>
-                    <Plus className="h-4 w-4" />
-                </Button>
-            </div>
+          <label className="text-sm font-medium text-muted-foreground tracking-wider uppercase">
+            Quantity
+          </label>
+          <div className="flex items-center gap-4">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => setQuantity(q => Math.max(1, q - 1))}
+            >
+              <Minus className="h-4 w-4" />
+            </Button>
+            <span className="text-2xl font-semibold w-12 text-center">
+              {quantity}
+            </span>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => setQuantity(q => q + 1)}
+            >
+              <Plus className="h-4 w-4" />
+            </Button>
+          </div>
         </div>
 
-
-        <Button size="lg" className="w-full font-semibold text-lg tracking-widest uppercase" onClick={handleAddToCart}>
+        <Button
+          size="lg"
+          className="w-full font-semibold text-lg tracking-widest uppercase"
+          onClick={handleAddToCart}
+        >
           <ShoppingCart className="mr-3 h-5 w-5" />
           Add to Order
         </Button>

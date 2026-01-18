@@ -2,7 +2,7 @@ import { DishDetails } from "@/components/dishes/dish-details";
 import { dishes } from "@/lib/data";
 import { notFound } from "next/navigation";
 
-export default function DishPage({ params }: { params: { slug: string } }) {
+export default async function DishPage({ params }: { params: { slug: string } }) {
   const dish = dishes.find(s => s.slug === params.slug);
 
   if (!dish) {
@@ -21,3 +21,5 @@ export async function generateStaticParams() {
     slug: dish.slug,
   }))
 }
+
+
